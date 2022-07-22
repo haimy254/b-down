@@ -3,12 +3,6 @@ from .forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
 
-# Create your views here.
-def home(request):
-    return render(request,'home.html')
-
-
-
 # registration 
 def register_request(request):
 	if request.method == "POST":
@@ -21,3 +15,7 @@ def register_request(request):
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
 	return render (request=request, template_name="register.html", context={"register_form":form})
+
+
+def home(request):
+    return render (request,"home.html")
