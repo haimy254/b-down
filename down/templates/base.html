@@ -23,18 +23,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" />
-    <link rel="stylesheet" href="{% static 'css/index.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/base.css'%}" />
     <title>breake down</title>
   </head>
   <body>
-    {% comment %} {% include 'navbar.html'%} {% endcomment %}
-    <div class="p-3">
-      <div class="m-5">
-        {% block content%}
-        <h1>Its working</h1>
-        {% endblock%}
-      </div>
-    </div>
+    <div class="background">{% block content%} {% endblock%}</div>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
