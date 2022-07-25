@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=CASCADE,default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default=1)
     image = models.ImageField(default='', upload_to='image/')
     caption = models.CharField(max_length=900)
     post_time = models.DateTimeField(auto_now_add=True)
