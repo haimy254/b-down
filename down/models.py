@@ -24,7 +24,7 @@ class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,default=1,null=True)
     image = models.ImageField(default='default.jpg', upload_to='project/')
     bio = models.CharField(max_length=200)
-    contact = models.IntegerField()
+    contact = models.IntegerField(max_length=10)
             
     def __str__(self):
         return self.user.username
