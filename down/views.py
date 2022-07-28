@@ -43,8 +43,8 @@ def home(request):
 
 #adding a single post
 def add_post(request):
-	if request.methods == "POST":
-		post_form = PostForm(request.POST)
+	if request.method == "POST":
+		post_form= PostForm(request.POST)
 
 		if post_form.is_valid():
 			obj = post_form.save(commit = False)
@@ -56,5 +56,8 @@ def add_post(request):
 			return render('post_detail')
 		else:
 			post_form = PostForm()
-	return render(request,'post_detail.html', {'post_form':post_form})
+			context = {
+        'post_form': post_form
+    }
+	return render(request,'post_detail.html',{})
 
