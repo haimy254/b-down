@@ -1,7 +1,8 @@
+from .models import Profile
 from django.shortcuts import render,redirect
 from django.contrib.auth import login
 from django.contrib.auth import login, authenticate
-from .forms import NewUserForm
+from .forms import NewUserForm, PostForm
 from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib import messages
 
@@ -39,3 +40,21 @@ def login_request(request):
 
 def home(request):
     return render (request,"home.html")
+
+#adding a single post
+def add_post(request):
+	if request.methods == "POST":
+		post_form = PostForm(request.POST)
+
+		if post_form.is_valid():
+			obj = post_form.save(commit = False)
+			obj.user = request.user
+			profile = Profile.object.get(user=request.user)
+			obj.profile = profile
+
+			obj.save()
+			return render('post_detail')
+		else:
+			post_form = PostForm()
+	return render(request,'post_detail.html', {'post_form':post_form})
+
